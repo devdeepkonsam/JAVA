@@ -1,7 +1,5 @@
 package com.raptor.Projects;
 
-import java.util.List;
-
 public class Solution {
     public static void main(String []argh){
         int [][] arr =  {{1,2,3},
