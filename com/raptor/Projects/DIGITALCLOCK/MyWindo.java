@@ -41,7 +41,7 @@ public class MyWindo extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 Date d = new Date();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd hh : mm : ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd hh : mm : ss a");//refer to simpledateformat list 
                 String datetime = sdf.format(d);
                 clocklabel.setText(datetime);
                 
