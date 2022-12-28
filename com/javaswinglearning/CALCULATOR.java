@@ -50,6 +50,7 @@ class Calc extends JFrame implements ActionListener
         add(res);
 
         sum.addActionListener(this);
+        sub.addActionListener(this);
         //Using anonymous class or inner class
         sub.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent sub){
@@ -79,7 +80,13 @@ class Calc extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e) {
         long num1 = Long.parseLong(t1.getText());
         long num2 = Integer.parseInt(t2.getText());
-        long val = num1 + num2;
+        long val=0;
+        //If we use more button.addActionListener()
+        if (e.getSource()==sum) { //getSource give object button which intiated the addActionlistener
+            val = num1 + num2;
+        }else if(e.getSource()==sub){
+            val = num1 - num2;
+        }
         res.setText(val+"");
         
     }
