@@ -44,7 +44,7 @@ class Addition extends JFrame implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-    //for line 54 calling the function of addActionListener
+    //for line 39 calling the function of addActionListener
     public void actionPerformed(ActionEvent e){
         Long num1 = Long.parseLong(t1.getText());
         long num2 = Integer.parseInt(t2.getText());
