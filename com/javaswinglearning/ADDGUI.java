@@ -17,10 +17,10 @@ public class ADDGUI {
     }
     
 }
-class Addition extends JFrame //implements ActionListener
+class Addition extends JFrame implements ActionListener
 {
     JTextField t1,t2;
-    JButton s,d,m;
+    JButton s,d,m,div;
     JLabel l;
 
     public Addition()
@@ -28,6 +28,7 @@ class Addition extends JFrame //implements ActionListener
         //setLocation(300, 300);
         t1 = new JTextField(20);
         t2 = new JTextField(20);
+        div = new JButton("DIVIDE");
         s = new JButton(new AbstractAction("SUM") {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,15 +39,7 @@ class Addition extends JFrame //implements ActionListener
             }
         });
 
-        d = new JButton(new AbstractAction("SUBSTRACT") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Long num1 = Long.parseLong(t1.getText());
-                long num2 = Integer.parseInt(t2.getText());
-                long val = num1 - num2;
-                l.setText(val+"");        
-            }
-        });
+        d = new JButton("SUBSTRACT");
         m = new JButton(new AbstractAction("Multiply") {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,9 +56,29 @@ class Addition extends JFrame //implements ActionListener
         add(s);
         add(d);
         add(m);
+        add(div);
         add(l);
 
-    //    s.addActionListener(this); // ActionListner is an interface
+        s.addActionListener(this); // ActionListner is an interface
+
+        d.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Long num1 = Long.parseLong(t1.getText());
+                long num2 = Integer.parseInt(t2.getText());
+
+                long val = num1 - num2;
+                l.setText(val+"");
+            }
+        });
+
+        div.addActionListener(ae ->{
+            Long num1 = Long.parseLong(t1.getText());
+            long num2 = Integer.parseInt(t2.getText());
+            long val = num1/num2;
+            l.setText(val+"");
+        });
+
+
 
         setLayout(new FlowLayout());
         setVisible(true);
@@ -73,13 +86,13 @@ class Addition extends JFrame //implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-    // public void actionPerformed(ActionEvent e){
-    //     Long num1 = Long.parseLong(t1.getText());
-    //     long num2 = Integer.parseInt(t2.getText());
+    public void actionPerformed(ActionEvent e){
+        Long num1 = Long.parseLong(t1.getText());
+        long num2 = Integer.parseInt(t2.getText());
 
-    //     long val = num1 + num2;
-    //     l.setText(val+"");
-    // }
+        long val = num1 + num2;
+        l.setText(val+"");
+    }
 }
 
 
