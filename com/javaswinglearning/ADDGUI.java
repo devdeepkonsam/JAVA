@@ -1,6 +1,5 @@
 package com.javaswinglearning;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.*;
 
 import javax.swing.AbstractAction;
@@ -18,7 +17,7 @@ public class ADDGUI {
     }
     
 }
-class Addition extends JFrame implements ActionListener
+class Addition extends JFrame //implements ActionListener
 {
     JTextField t1,t2;
     JButton s,d,m;
@@ -29,7 +28,16 @@ class Addition extends JFrame implements ActionListener
         //setLocation(300, 300);
         t1 = new JTextField(20);
         t2 = new JTextField(20);
-        s = new JButton("SUM");
+        s = new JButton(new AbstractAction("SUM") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Long num1 = Long.parseLong(t1.getText());
+                long num2 = Integer.parseInt(t2.getText());
+                long val = num1 + num2;
+                l.setText(val+"");        
+            }
+        });
+
         d = new JButton(new AbstractAction("SUBSTRACT") {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +47,6 @@ class Addition extends JFrame implements ActionListener
                 l.setText(val+"");        
             }
         });
-
         m = new JButton(new AbstractAction("Multiply") {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +58,6 @@ class Addition extends JFrame implements ActionListener
         });
 
         l = new JLabel("RESULT");
-
         add(t1);
         add(t2);
         add(s);
@@ -59,22 +65,21 @@ class Addition extends JFrame implements ActionListener
         add(m);
         add(l);
 
-        s.addActionListener(this); // ActionListner is an interface
+    //    s.addActionListener(this); // ActionListner is an interface
 
         setLayout(new FlowLayout());
         setVisible(true);
         setSize(250,300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        Long num1 = Long.parseLong(t1.getText());
-        long num2 = Integer.parseInt(t2.getText());
-
-        long val = num1 + num2;
-        l.setText(val+"");
     }
+    // public void actionPerformed(ActionEvent e){
+    //     Long num1 = Long.parseLong(t1.getText());
+    //     long num2 = Integer.parseInt(t2.getText());
+
+    //     long val = num1 + num2;
+    //     l.setText(val+"");
+    // }
 }
 
 
