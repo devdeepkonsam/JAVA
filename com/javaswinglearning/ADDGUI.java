@@ -1,8 +1,6 @@
 package com.javaswinglearning;
 
 import java.awt.event.*;
-
-import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +18,7 @@ public class ADDGUI {
 class Addition extends JFrame implements ActionListener
 {
     JTextField t1,t2;
-    JButton s,d,m,div;
+    JButton s;
     JLabel l;
 
     public Addition()
@@ -28,57 +26,17 @@ class Addition extends JFrame implements ActionListener
         //setLocation(300, 300);
         t1 = new JTextField(20);
         t2 = new JTextField(20);
-        div = new JButton("DIVIDE");
-        s = new JButton(new AbstractAction("SUM") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Long num1 = Long.parseLong(t1.getText());
-                long num2 = Integer.parseInt(t2.getText());
-                long val = num1 + num2;
-                l.setText(val+"");        
-            }
-        });
-
-        d = new JButton("SUBSTRACT");
-        m = new JButton(new AbstractAction("Multiply") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Long num1 = Long.parseLong(t1.getText());
-                long num2 = Integer.parseInt(t2.getText());
-                long val = num1 * num2;
-                l.setText(val+"");        
-            }
-        });
+        s = new JButton("SUM");
+        
+        
 
         l = new JLabel("RESULT");
         add(t1);
         add(t2);
         add(s);
-        add(d);
-        add(m);
-        add(div);
         add(l);
 
         s.addActionListener(this); // ActionListner is an interface
-
-        d.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                Long num1 = Long.parseLong(t1.getText());
-                long num2 = Integer.parseInt(t2.getText());
-
-                long val = num1 - num2;
-                l.setText(val+"");
-            }
-        });
-
-        div.addActionListener(ae ->{
-            Long num1 = Long.parseLong(t1.getText());
-            long num2 = Integer.parseInt(t2.getText());
-            long val = num1/num2;
-            l.setText(val+"");
-        });
-
-
 
         setLayout(new FlowLayout());
         setVisible(true);
@@ -86,6 +44,7 @@ class Addition extends JFrame implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+    //for line 54 calling the function of addActionListener
     public void actionPerformed(ActionEvent e){
         Long num1 = Long.parseLong(t1.getText());
         long num2 = Integer.parseInt(t2.getText());
