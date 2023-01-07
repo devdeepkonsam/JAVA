@@ -6,8 +6,9 @@ import java.util.Arrays;
 public class QuickSort{
     public static void main(String[] args) {
         int [] arr = {5,4,3,2,1,0};
-        quicky(arr, 0, arr.length-1);
-        System.out.println(Arrays.toString(arr));
+        //quicky(arr, 0, arr.length-1);
+        //System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(mergesort(arr)));
     }
     public static void quicksort(int [] arr, int low , int high){
         if (low>= high) {
