@@ -7,7 +7,7 @@ public class BinarySearch {
         Scanner input = new Scanner(System.in);
         int [] arr = {-12,-7,-4,1,2,3,4,5,6,7,8,9,11,12,13,14,15};
         
-        int target = -12;
+        int target = 12;
         //System.out.println(binarysearch(arr, target)!=-1);   //boolean true / false
         System.out.println(binarysearch(arr, target));       //index
         input.close();
