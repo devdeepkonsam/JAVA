@@ -69,7 +69,6 @@ class Calc extends JFrame implements ActionListener
         });
 
         setLayout(new FlowLayout());
-        setLocation(700, 350);
         setVisible(true);
         setTitle("CALCULATOR");
         setSize(250,300);

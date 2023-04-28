@@ -6,7 +6,7 @@ public class Greatestletter {
     public static void main(String[] args) {
 
         char[] letter = {'a','b','d','g','i','l','o','s'};
-        char target = 'c';
+        char target = 'l';
         char res = nextGreatestLetter(letter, target);
         System.out.println(res);
         }
@@ -28,7 +28,7 @@ public class Greatestletter {
                 end = mid-1;
             }   
         }
-        a = arr[start];
+        a = arr[end]; // or a = arr[start]
         return a;
     }
 }

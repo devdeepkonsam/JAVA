@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class SortArrayByParity {
     public static void main(String[] args) {
-        int [] arr = {2,0};
+        int [] arr = {2,10};
         sortArrayparity(arr);
         System.out.println(Arrays.toString(arr));
     }
