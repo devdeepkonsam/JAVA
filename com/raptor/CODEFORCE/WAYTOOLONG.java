@@ -15,5 +15,6 @@ public class WAYTOOLONG {
                 System.out.println(""+word.charAt(0)+(len-2)+word.charAt(len-1));
             }
         }
+        sc.close();
     }
 }
