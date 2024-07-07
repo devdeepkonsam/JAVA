@@ -5,8 +5,12 @@ import java.util.Scanner;
 public class BinarySearch {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int [] arr = {-12,-7,-4,1,2,3,4,5,6,7,8,9,11,12,13,14,15};
-        
+        System.out.print("Enter the Number of Elements: ");
+        int num = input.nextInt();
+        int arr[] = new int[num];
+        for (int i = 0; i < num; i++) {
+            arr[i]  = input.nextInt();
+        }
         int target = 12;
         //System.out.println(binarysearch(arr, target)!=-1);   //boolean true / false
         System.out.println(binarysearch(arr, target));       //index
