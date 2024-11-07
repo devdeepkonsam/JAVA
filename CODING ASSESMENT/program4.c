@@ -2,7 +2,7 @@
 
 int main(){
     FILE *file;
-    char content,ch;
+    char content;
 
     file = fopen("example.txt","w");
     if(file == NULL){
