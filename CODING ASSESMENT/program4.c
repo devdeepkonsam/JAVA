@@ -9,7 +9,7 @@ int main(){
         printf("Error opening file\n");
         return 1;
     }
-    fprintf(file, "Hello, This is DEVDEEP SINGHA");
+    fprintf(file, "HELLO WORLD");
     fclose(file);
 
     file = fopen("example.txt","r");
