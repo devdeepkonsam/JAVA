@@ -50,23 +50,20 @@ int peek() {
     return queue[front];
 }
 
+
 void display() {
     if (isEmpty()) {
         printf("The queue is empty.\n");
         return;
     }
     printf("Queue elements are:\n");
-    if (front <= rear) {
-        for (int i = front; i <= rear; i++) {
-            printf("%d ", queue[i]);
+    int i = front;
+    while (1) {
+        printf("%d ", queue[i]);
+        if (i == rear) {
+            break;
         }
-    } else {
-        for (int i = front; i < MAX; i++) {
-            printf("%d ", queue[i]);
-        }
-        for (int i = 0; i <= rear; i++) {
-            printf("%d ", queue[i]);
-        }
+        i = (i + 1) % MAX;
     }
     printf("\n");
 }
