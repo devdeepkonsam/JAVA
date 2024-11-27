@@ -12,12 +12,12 @@ void push(int data){
     }
 }
 
-int pop(){
+void pop(){
     if(top==-1){
         printf("Stack underflow");
     }else{
-        printf(stack[top]);
-        return stack[top--];
+        printf("popped %d\n",stack[top]);
+        top--;
     }
 }
 

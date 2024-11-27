@@ -31,6 +31,11 @@ void display() {
         printf("\n");
     }
 }
+void display2(){
+    for(int i =0;i<MAX;i++){
+        printf("%d\n",queue[i]);
+    }
+}
 
 int main() {
     enqueue(10);
@@ -38,6 +43,15 @@ int main() {
     enqueue(30);
     display();
     dequeue();
+    enqueue(45);
+    display2();
+    enqueue(56);
+    enqueue(75);
+    display();
+    display2();
+    dequeue();
+    enqueue(78);
+    enqueue(34);
     display();
     return 0;
 }
