@@ -89,3 +89,200 @@ int main() {
     printf("Exiting program.\n");
     return 0;
 }
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the Node structure
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to insert at the beginning
+void insertAtBeginning(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = *head;
+    *head = newNode;
+}
+
+// Function to insert at the end
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    struct Node* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+// Function to insert at a specific position
+void insertAtPosition(struct Node** head, int data, int position) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+
+    if (position == 1) {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    struct Node* temp = *head;
+    for (int i = 1; i < position - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Position out of range.\n");
+        free(newNode);
+        return;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+// Function to delete from the beginning
+void deleteFromBeginning(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* temp = *head;
+    *head = (*head)->next;
+    free(temp);
+}
+
+// Function to delete from the end
+void deleteFromEnd(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* temp = *head;
+
+    if (temp->next == NULL) {
+        *head = NULL;
+        free(temp);
+        return;
+    }
+
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+
+    free(temp->next);
+    temp->next = NULL;
+}
+
+// Function to delete from a specific position
+void deleteFromPosition(struct Node** head, int position) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* temp = *head;
+
+    if (position == 1) {
+        *head = (*head)->next;
+        free(temp);
+        return;
+    }
+
+    for (int i = 1; i < position - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL || temp->next == NULL) {
+        printf("Position out of range.\n");
+        return;
+    }
+
+    struct Node* deleteNode = temp->next;
+    temp->next = deleteNode->next;
+    free(deleteNode);
+}
+
+// Function to traverse the linked list
+void traverse(struct Node* head) {
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Function to search for an element in the linked list
+void search(struct Node* head, int key) {
+    int position = 1;
+    struct Node* temp = head;
+
+    while (temp != NULL) {
+        if (temp->data == key) {
+            printf("Element %d found at position %d.\n", key, position);
+            return;
+        }
+        temp = temp->next;
+        position++;
+    }
+    printf("Element %d not found.\n", key);
+}
+
+// Main function to demonstrate all operations
+int main() {
+    struct Node* head = NULL;
+
+    // Insert operations
+    insertAtBeginning(&head, 10);
+    insertAtEnd(&head, 20);
+    insertAtEnd(&head, 30);
+    insertAtPosition(&head, 25, 3);
+
+    printf("Linked List after insertion:\n");
+    traverse(head);
+
+    // Search operations
+    search(head, 25);
+    search(head, 15);
+
+    // Delete operations
+    deleteFromBeginning(&head);
+    printf("Linked List after deleting from beginning:\n");
+    traverse(head);
+
+    deleteFromEnd(&head);
+    printf("Linked List after deleting from end:\n");
+    traverse(head);
+
+    deleteFromPosition(&head, 2);
+    printf("Linked List after deleting from position 2:\n");
+    traverse(head);
+
+    return 0;
+}
+
+
+
