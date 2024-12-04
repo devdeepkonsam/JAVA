@@ -1,70 +1,65 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-#define MAX 5
+#define MAX 10
 
 int queue[MAX];
-int front = -1;
-int rear = -1;
+int front=-1;
+int rear=-1;
 
-int isEmpty() {
+int isEmpty(){
     return front == -1;
 }
 
-int isFull() {
-    return (rear + 1) % MAX == front;
+int isFull(){
+    return (rear+1) % MAX == rear;
 }
 
-void enqueue(int value) {
-    if (isFull()) {
-        printf("Queue overflow. Unable to enqueue %d.\n", value);
-        return;
+void enqueue(int value){
+    if(isFull){
+        printf("Queue Overflow.\n");
     }
-    if (front == -1) {
+    if(isEmpty()){
         front = 0;
     }
     rear = (rear + 1) % MAX;
     queue[rear] = value;
-    printf("%d enqueued into the queue.\n", value);
+    printf("%d is pushed onto the queue.\n",value);
 }
 
-int dequeue() {
-    if (isEmpty()) {
+int dequeue(){
+    if(isEmpty()){
         return -1;
     }
-    int dequeuedValue = queue[front];
+    int queuedValue = queue[front];
     if (front == rear) {
         front = rear = -1;
-    } else {
-        front = (front + 1) % MAX;
+    }else {
+        front = (front+1) % MAX;
     }
-    return dequeuedValue;
+    return queuedValue;
 }
 
-int peek() {
-    if (isEmpty()) {
-        printf("The queue is empty.\n");
+int peek(){
+    if(isEmpty()){
+        printf("Empty Queue\n");
         return -1;
     }
     return queue[front];
 }
 
-
-void display() {
-    if (isEmpty()) {
-        printf("The queue is empty.\n");
+void display(){
+    if(isEmpty()){
+        printf("Empty Queue\n");
         return;
     }
-    printf("Queue elements are:\n");
     int i = front;
-    while (1) {
-        printf("%d ", queue[i]);
-        if (i == rear) {
+    printf("Queue Elements :\n");
+    while(1) {
+        if(i == rear){
             break;
         }
-        i = (i + 1) % MAX;
+        printf("%d ",queue[i]);
+        i = (i+1)%MAX;
     }
-    printf("\n");
 }
 
 int main() {
